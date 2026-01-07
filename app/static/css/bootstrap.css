@@ -6330,14 +6330,15 @@ button.close {
   }
 }
 
-.hover01 figure img {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+.item .image {
+    overflow: hidden;
 }
-.hover01 figure:hover img {
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
+
+.item .image img {
+    transition: transform 0.4s ease;
+}
+
+.item .image img:hover {
+    transform: scale(1.1);
 }
 /*# sourceMappingURL=bootstrap.css.map */
