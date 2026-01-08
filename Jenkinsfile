@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHONUNBUFFERED = '1'
+        PYTHON = '"C:\\Users\\arunr\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Python 3.10\\IDLE (Python 3.10 64-bit).lnk"'
     }
 
     stages {
@@ -17,15 +17,15 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Python dependencies...'
-                bat 'python -m pip install --upgrade pip'
-                bat 'pip install -r requirements.txt'
+                bat '"%PYTHON%" -m pip install --upgrade pip'
+                bat '"%PYTHON%" -m pip install -r requirements.txt'
             }
         }
 
         stage('Start Flask Application') {
             steps {
                 echo 'Starting Flask application...'
-                bat 'start /B python app\\app.py'
+                bat 'start /B "%PYTHON%" app\\app.py'
                 bat 'timeout /T 8'
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage('Run Selenium Automation Tests') {
             steps {
                 echo 'Running Selenium test cases...'
-                bat 'pytest tests'
+                bat '"%PYTHON%" -m pytest tests'
             }
         }
 
