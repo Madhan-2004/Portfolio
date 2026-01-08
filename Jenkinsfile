@@ -37,10 +37,7 @@ pipeline {
             }
         }
 
-        stage('Deploy (Only If Tests Pass)') {
-            when {
-                success()
-            }
+        stage('Deploy') {
             steps {
                 echo 'All tests passed. Deployment approved.'
             }
