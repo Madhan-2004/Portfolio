@@ -24,7 +24,7 @@ pipeline {
 
         stage('Start Flask Application') {
             steps {
-                echo 'Starting Flask application...'
+                echo 'Starting Flask application for testing...'
                 bat 'start "" /B "%PYTHON%" app\\app.py'
                 bat 'ping 127.0.0.1 -n 8 > nul'
             }
@@ -40,6 +40,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'All tests passed. Deployment approved.'
+                echo 'Application is already running. Deployment step completed.'
             }
         }
     }
