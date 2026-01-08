@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = "C:\\Users\\arunr\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+        PYTHON = 'C:\\Users\\arunr\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
     }
 
     stages {
@@ -25,8 +25,8 @@ pipeline {
         stage('Start Flask Application') {
             steps {
                 echo 'Starting Flask application...'
-                bat 'start /B "%PYTHON%" app\\app.py'
-                bat 'timeout /T 8'
+                bat 'start "" /B "%PYTHON%" app\\app.py'
+                bat 'ping 127.0.0.1 -n 8 > nul'
             }
         }
 
