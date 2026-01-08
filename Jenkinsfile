@@ -17,23 +17,23 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Python dependencies...'
-                sh 'python -m pip install --upgrade pip'
-                sh 'pip install -r requirements.txt'
+                bat 'python -m pip install --upgrade pip'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Start Flask Application') {
             steps {
                 echo 'Starting Flask application...'
-                sh 'nohup python app/app.py &'
-                sh 'sleep 8'
+                bat 'start /B python app\\app.py'
+                bat 'timeout /T 8'
             }
         }
 
         stage('Run Selenium Automation Tests') {
             steps {
                 echo 'Running Selenium test cases...'
-                sh 'pytest tests/'
+                bat 'pytest tests'
             }
         }
 
