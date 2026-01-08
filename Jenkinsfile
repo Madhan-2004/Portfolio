@@ -9,31 +9,35 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Madhan-2004/Portfolio.git'
+                echo 'Cloning GitHub repository...'
+                git branch: 'main', url: 'https://github.com/Madhan-2004/Portfolio'
             }
         }
 
         stage('Install Dependencies') {
             steps {
+                echo 'Installing Python dependencies...'
                 sh 'python -m pip install --upgrade pip'
                 sh 'pip install -r requirements.txt'
             }
         }
 
-        stage('Start Flask App') {
+        stage('Start Flask Application') {
             steps {
+                echo 'Starting Flask application...'
                 sh 'nohup python app/app.py &'
                 sh 'sleep 8'
             }
         }
 
-        stage('Run Automation Tests') {
+        stage('Run Selenium Automation Tests') {
             steps {
-                sh 'pytest'
+                echo 'Running Selenium test cases...'
+                sh 'pytest tests/'
             }
         }
 
-        stage('Deploy (Only if Tests Pass)') {
+        stage('Deploy (Only If Tests Pass)') {
             when {
                 success()
             }
@@ -45,15 +49,15 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline completed successfully. App is stable.'
+            echo 'PIPELINE SUCCESS: All stages executed successfully. Application is stable.'
         }
 
         failure {
-            echo 'Pipeline failed. Tests did not pass. Deployment blocked.'
+            echo 'PIPELINE FAILURE: Tests failed or error occurred. Deployment blocked.'
         }
 
         always {
-            echo 'Pipeline execution finished.'
+            echo 'Pipeline execution completed.'
         }
     }
 }
