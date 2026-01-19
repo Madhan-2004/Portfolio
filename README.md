@@ -29,23 +29,23 @@ This setup mimics production-level CI/CD workflows used in real software teams.
 Portfolio/
 │
 ├── app/
-│ ├── app.py
-│ ├── templates/
-│ │ └── index.html
-│ └── static/
-│ ├── css/
-│ ├── js/
-│ └── img/
+│   ├── app.py
+│   ├── templates/
+│   │   └── index.html
+│   └── static/
+│       ├── css/
+│       ├── js/
+│       └── img/
 │
 ├── tests/
-│ ├── pages/
-│ ├── test_home.py
-│ └── conftest.py
+│   ├── pages/
+│   │   └── home_page.py
+│   ├── conftest.py
+│   └── test_home.py
 │
 ├── requirements.txt
 ├── Jenkinsfile
 └── README.md
-
 
 ---
 
