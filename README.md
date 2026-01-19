@@ -24,31 +24,6 @@ This setup mimics production-level CI/CD workflows used in real software teams.
 
 ---
 
-## 📂 Project Structure
-
-Portfolio/
-│
-├── app/
-│   ├── app.py
-│   ├── templates/
-│   │   └── index.html
-│   └── static/
-│       ├── css/
-│       ├── js/
-│       └── img/
-│
-├── tests/
-│   ├── pages/
-│   │   └── home_page.py
-│   ├── conftest.py
-│   └── test_home.py
-│
-├── requirements.txt
-├── Jenkinsfile
-└── README.md
-
----
-
 ## ⚙️ CI/CD Pipeline Flow
 
 1. Code is pushed to the GitHub repository  
